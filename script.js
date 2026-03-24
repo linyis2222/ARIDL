@@ -1,21 +1,21 @@
 const demons = [
   {
     name: "in canon",
-    publisher: "CairoX",
-    verifier: "Zoink",
-    video: "https://www.youtube.com/embed/CELNmHwln_c",
-    id: "119544028",
-    gddltier: "Free to Copy",
-    idstier: "CBF Blocker, Long, Chokepoints, Ship, Wave, Timings"
+    publisher: "cordeaux",
+    verifier: "TheyCallMeEvan",
+    video: "https://www.youtube.com/embed/YcPsb0C2sdc",
+    id: "80575901",
+    gddltier: "20",
+    idstier: "Extreme"
   },
   {
-    name: "Video",
-    publisher: "MaxxoRMeN",
-    verifier: "ivyteal",
-    video: "https://www.youtube.com/embed/akp2P16806k",
-    id: "125713603",
-    password: "Free to Copy",
-    idstier: "NONG, XL, Over 8 min, Gimmicky"
+    name: "smohcs",
+    publisher: "durianhead",
+    verifier: "BlazeRol",
+    video: "https://www.youtube.com/embed/pyZQkdCBGzk",
+    id: "52448794",
+    gddltier: "21",
+    idstier: "Extreme"
   }
 ];
 
@@ -25,9 +25,9 @@ const demons = [
    - 날짜는 문자열(YYYY-MM-DD 또는 로컬 포맷)로 표기.
    =========================== */
 const changeLog = [
-  { date: '2026-03-20', detail: 'paranoia has been placed at #104, above Blood Echo and below Graceful. This pushes Trotil into the Legacy List.' },
-  { date: '2026-03-20', detail: 'Devotion has been raised from #379 to #331, above Kuzureta and below Infinite Iniquity.' },
-  { date: '2025-10-09', detail: 'List Created' }
+  { date: '2026-03-20', detail: 'smohcs has been placed at #2, below in canon.' },
+  { date: '2026-03-20', detail: 'in canon has been placed at #1.' },
+  { date: '2025-03-24', detail: 'List Created' }
 ];
 
 /* ===========================
