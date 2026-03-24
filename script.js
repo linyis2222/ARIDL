@@ -17,7 +17,7 @@ const demons = [
     video: "https://www.youtube.com/embed/akp2P16806k",
     id: "125713603",
     password: "Free to Copy",
-    tag: "NONG, XL, Over 8 min, Gimmicky"
+    idstier: "NONG, XL, Over 8 min, Gimmicky"
   }
 ];
 
