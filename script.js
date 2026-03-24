@@ -143,7 +143,7 @@ function selectMap(demon, liElement) {
     mapVideo.innerHTML = `<iframe src="${escapeHtml(demon.video)}" allowfullscreen></iframe>`;
     mapId.innerHTML = `<span class="tag">ID</span><span class="value">${escapeHtml(demon.id)}</span>`;
     mapGddltier.innerHTML = `<span class="tag">GDDL Tier</span><span class="value">${escapeHtml(demon.gddltier)}</span>`;
-    mapTag.innerHTML = `<span class="tag">IDS Tier</span><span class="value">${escapeHtml(demon.idstier)}</span>`;
+    mapIdstier.innerHTML = `<span class="tag">IDS Tier</span><span class="value">${escapeHtml(demon.idstier)}</span>`;
   
 
     document.querySelectorAll('#map-list li').forEach(el => el.classList.remove('active'));
