@@ -25,8 +25,8 @@ const demons = [
    - 날짜는 문자열(YYYY-MM-DD 또는 로컬 포맷)로 표기.
    =========================== */
 const changeLog = [
-  { date: '2026-03-20', detail: 'smohcs has been placed at #2, below in canon.' },
-  { date: '2026-03-20', detail: 'in canon has been placed at #1.' },
+  { date: '2026-03-24', detail: 'smohcs has been placed at #2, below in canon.' },
+  { date: '2026-03-24', detail: 'in canon has been placed at #1.' },
   { date: '2025-03-24', detail: 'List Created' }
 ];
 
