@@ -29,7 +29,7 @@ const demons = [
 const changeLog = [
   { date: '2026-03-20', detail: 'paranoia has been placed at #104, above Blood Echo and below Graceful. This pushes Trotil into the Legacy List.' },
   { date: '2026-03-20', detail: 'Devotion has been raised from #379 to #331, above Kuzureta and below Infinite Iniquity.' },
-    { date: '2025-10-09', detail: 'List Created' }
+  { date: '2025-10-09', detail: 'List Created' }
 ];
 
 /* ===========================
