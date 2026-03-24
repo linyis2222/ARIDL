@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Rated Insane Demons List</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <header id="top-bar">
+    <div class="header-left">
+      <h1>ARIDL</h1>
+    </div>
+
+    <div class="header-right">
+      <button id="btn-main" class="top-btn">Main</button>
+      <button id="btn-list" class="top-btn">List</button>
+      <button id="btn-changelog" class="top-btn">Change Log</button>
+    </div>
+  </header>
+
+  <!-- ✅ MAIN PAGE -->
+  <div id="main-page" class="page active">
+    <div style="text-align:center; margin-top:150px;">
+      <h1>WELCOME TO Ultimate Demonlist!</h1>
+      <p>
+        This list was created as a spinoff of the AREDL, ranking every rated Insane Demon in Geometry Dash.
+      </p>
+
+      <h3>Disclaimer:</h3>
+      <p>All placements are subjective and may change.</p>
+      <button id="view-list-btn">View List</button><br>
+
+      <h2>Other Websites</h2>
+      <p>
+  <strong>All Rated Insane Demons List:</strong> 
+  <a href="https://aridl.pages.dev" target="_blank">https://aridl.pages.dev</a>
+</p>
+      <h2>List Editors</h2>
+      
+      <h3>Owner</h3>
+      <p><a href="https://www.youtube.com/@SatelliteLz" target="_blank">Satellite</a></p>
+    </div>
+  </div>
+
+  <!-- ✅ LIST PAGE -->
+  <div id="list-page" class="page">
+    <div id="container">
+      <aside id="left-panel">
+
+        <div id="search-container">
+          <input type="text" id="search-input" placeholder="Search...">
+        </div>
+
+        <ul id="map-list"></ul>
+      </aside>
+
+      <main id="right-panel">
+        <section id="map-details">
+          <h2 id="map-name"></h2>
+          <p id="map-creators"></p>
+          <p id="map-verifier"></p>
+          <p id="map-publisher"></p>
+          <div id="map-video"></div>
+          <p id="map-id"></p>
+          <p id="map-gddltier"></p>
+          <p id="map-idstier"></p>
+        </section>
+
+        <section id="change-log" aria-label="Change Log" class="hidden"></section>
+      </main>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js" defer></script>
+
+  <footer style="text-align:center; font-size:12px; padding:10px; background:#f0f0f0;">
+    Created by <a href="https://www.youtube.com/@SatelliteLz" target="_blank">Satellite</a>
+  </footer>
+
+</body>
+</html>
 
