@@ -1,9 +1,8 @@
 const demons = [
   {
-    name: "Thinking Space II",
-    creators: "Jawis, Rin04, HaydenDom, V453C70M14, UFokinWotM8, Hyperbola, NcaT, KugelBlitZ, Triforce, Maxmur, MeatiusGaming, DrCuber, ADrone, Korewa, GhostVandalf, CairoX, RealVet, Genoxide, Crowlley, Meox, GamerKnight750, ThunderDarkness, DiamondSkull, Kevellium",
-    verifier: "Zoink",
+    name: "in canon",
     publisher: "CairoX",
+    verifier: "Zoink",
     video: "https://www.youtube.com/embed/CELNmHwln_c",
     id: "119544028",
     gddltier: "Free to Copy",
@@ -11,9 +10,8 @@ const demons = [
   },
   {
     name: "Video",
-    creators: "MaxxoRMeN",
-    verifier: "ivyteal",
     publisher: "MaxxoRMeN",
+    verifier: "ivyteal",
     video: "https://www.youtube.com/embed/akp2P16806k",
     id: "125713603",
     password: "Free to Copy",
@@ -43,9 +41,8 @@ let btnList;
 let btnChangelog;
 
 let mapName;
-let mapCreators;
-let mapVerifier;
 let mapPublisher;
+let mapVerifier;
 let mapVideo;
 let mapId;
 let mapGddltier;
@@ -137,9 +134,8 @@ function selectMap(demon, liElement) {
     if (changeLogDiv) changeLogDiv.style.display = 'none';
 
     mapName.textContent = demon.name;
-    mapCreators.innerHTML = `<span class="tag">CREATORS</span><span class="value">${escapeHtml(demon.creators)}</span>`;
-    mapVerifier.innerHTML = `<span class="tag">VERIFIER</span><span class="value">${escapeHtml(demon.verifier)}</span>`;
     mapPublisher.innerHTML = `<span class="tag">PUBLISHER</span><span class="value">${escapeHtml(demon.publisher)}</span>`;
+    mapVerifier.innerHTML = `<span class="tag">VERIFIER</span><span class="value">${escapeHtml(demon.verifier)}</span>`;
     mapVideo.innerHTML = `<iframe src="${escapeHtml(demon.video)}" allowfullscreen></iframe>`;
     mapId.innerHTML = `<span class="tag">ID</span><span class="value">${escapeHtml(demon.id)}</span>`;
     mapGddltier.innerHTML = `<span class="tag">GDDL Tier</span><span class="value">${escapeHtml(demon.gddltier)}</span>`;
@@ -205,9 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btnChangelog = document.getElementById('btn-changelog');
     
     mapName = document.getElementById('map-name');
-    mapCreators = document.getElementById('map-creators');
-    mapVerifier = document.getElementById('map-verifier');
     mapPublisher = document.getElementById('map-publisher');
+    mapVerifier = document.getElementById('map-verifier');
     mapVideo = document.getElementById('map-video');
     mapId = document.getElementById('map-id');
     mapGddltier = document.getElementById('map-gddltier');
