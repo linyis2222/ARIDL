@@ -27,7 +27,7 @@ const demons = [
 const changeLog = [
   { date: '2026-03-24', detail: 'smohcs has been placed at #2, below in canon.' },
   { date: '2026-03-24', detail: 'in canon has been placed at #1.' },
-  { date: '2025-03-24', detail: 'List Created' }
+  { date: '2026-03-24', detail: 'List Created' }
 ];
 
 /* ===========================
