@@ -16,7 +16,25 @@ const demons = [
     id: "52448794",
     gddltier: "21",
     idstier: "Extreme"
-  }
+  },
+  {
+    name: "teehee colon three",
+    publisher: "Wolvyy",
+    verifier: "Wolvyy",
+    video: "https://www.youtube.com/embed/NIcEmXpeI68",
+    id: "90661998",
+    gddltier: "20",
+    idstier: "Extreme"
+  },
+  {
+    name: "Hakaitsu",
+    publisher: "ImNotCriko",
+    verifier: "zAlonc(Original), ImNotCriko(Update)",
+    video: "https://www.youtube.com/embed/uKUbzE_FcrM",
+    id: "118995602",
+    gddltier: "21",
+    idstier: "Extreme"
+  },
 ];
 
 /* ===========================
@@ -25,6 +43,8 @@ const demons = [
    - 날짜는 문자열(YYYY-MM-DD 또는 로컬 포맷)로 표기.
    =========================== */
 const changeLog = [
+  { date: '2026-03-29', detail: 'Hakaitsu has been placed at #4, below teehee colon three.' },
+  { date: '2026-03-29', detail: 'teehee colon three has been placed at #3, below smohcs.' },
   { date: '2026-03-24', detail: 'smohcs has been placed at #2, below in canon.' },
   { date: '2026-03-24', detail: 'in canon has been placed at #1.' },
   { date: '2026-03-24', detail: 'List Created' }
