@@ -2,7 +2,6 @@ const demons = [
   {
     name: "in canon",
     publisher: "cordeaux",
-    verifier: "TheyCallMeEvan",
     video: "https://www.youtube.com/embed/YcPsb0C2sdc",
     id: "80575901",
     gddltier: "20",
@@ -11,7 +10,6 @@ const demons = [
   {
     name: "smohcs",
     publisher: "durianhead",
-    verifier: "BlazeRol",
     video: "https://www.youtube.com/embed/pyZQkdCBGzk",
     id: "52448794",
     gddltier: "21",
@@ -20,7 +18,6 @@ const demons = [
   {
     name: "teehee colon three",
     publisher: "Wolvyy",
-    verifier: "Wolvyy",
     video: "https://www.youtube.com/embed/NIcEmXpeI68",
     id: "90661998",
     gddltier: "20",
@@ -29,7 +26,6 @@ const demons = [
   {
     name: "Hakaitsu",
     publisher: "ImNotCriko",
-    verifier: "zAlonc(Original), ImNotCriko(Update)",
     video: "https://www.youtube.com/embed/uKUbzE_FcrM",
     id: "118995602",
     gddltier: "21",
@@ -38,7 +34,6 @@ const demons = [
   {
     name: "Aurora",
     publisher: "hasuopf",
-    verifier: "crackworrior",
     video: "https://www.youtube.com/embed/izIanwLeZGk",
     id: "108190614",
     gddltier: "21",
@@ -47,7 +42,6 @@ const demons = [
   {
     name: "Dragonlocked",
     publisher: "FrostDragonGD",
-    verifier: "MintyNoodle",
     video: "https://www.youtube.com/embed/lSyf-c-7Uyo",
     id: "72211008",
     gddltier: "20",
@@ -61,6 +55,8 @@ const demons = [
    - 날짜는 문자열(YYYY-MM-DD 또는 로컬 포맷)로 표기.
    =========================== */
 const changeLog = [
+  { date: '2026-04-13', detail: 'Dragonlocked has been placed at #6, below Aurora.' },
+  { date: '2026-04-13', detail: 'Aurora has been placed at #5, below Hakaitsu.' },
   { date: '2026-03-29', detail: 'Hakaitsu has been placed at #4, below teehee colon three.' },
   { date: '2026-03-29', detail: 'teehee colon three has been placed at #3, below smohcs.' },
   { date: '2026-03-24', detail: 'smohcs has been placed at #2, below in canon.' },
@@ -80,7 +76,6 @@ let btnChangelog;
 
 let mapName;
 let mapPublisher;
-let mapVerifier;
 let mapVideo;
 let mapId;
 let mapGddltier;
@@ -173,7 +168,6 @@ function selectMap(demon, liElement) {
 
     mapName.textContent = demon.name;
     mapPublisher.innerHTML = `<span class="tag">PUBLISHER</span><span class="value">${escapeHtml(demon.publisher)}</span>`;
-    mapVerifier.innerHTML = `<span class="tag">VERIFIER</span><span class="value">${escapeHtml(demon.verifier)}</span>`;
     mapVideo.innerHTML = `<iframe src="${escapeHtml(demon.video)}" allowfullscreen></iframe>`;
     mapId.innerHTML = `<span class="tag">ID</span><span class="value">${escapeHtml(demon.id)}</span>`;
     mapGddltier.innerHTML = `<span class="tag">GDDL Tier</span><span class="value">${escapeHtml(demon.gddltier)}</span>`;
@@ -240,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     mapName = document.getElementById('map-name');
     mapPublisher = document.getElementById('map-publisher');
-    mapVerifier = document.getElementById('map-verifier');
     mapVideo = document.getElementById('map-video');
     mapId = document.getElementById('map-id');
     mapGddltier = document.getElementById('map-gddltier');
