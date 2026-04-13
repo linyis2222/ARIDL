@@ -35,6 +35,24 @@ const demons = [
     gddltier: "21",
     idstier: "Extreme"
   },
+  {
+    name: "Aurora",
+    publisher: "hasuopf",
+    verifier: "crackworrior",
+    video: "https://www.youtube.com/embed/izIanwLeZGk",
+    id: "108190614",
+    gddltier: "21",
+    idstier: "Extreme"
+  },
+  {
+    name: "Dragonlocked",
+    publisher: "FrostDragonGD",
+    verifier: "MintyNoodle",
+    video: "https://www.youtube.com/embed/lSyf-c-7Uyo",
+    id: "72211008",
+    gddltier: "20",
+    idstier: "Extreme"
+  },
 ];
 
 /* ===========================
