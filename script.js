@@ -47,6 +47,46 @@ const demons = [
     gddltier: "20",
     idstier: "Extreme"
   },
+  {
+    name: "Theory of Visible v3",
+    publisher: "BlueLite",
+    video: "https://www.youtube.com/embed/PmdrpdEo518",
+    id: "376609046",
+    gddltier: "20",
+    idstier: "Extreme"
+  },
+  {
+    name: "Night Life",
+    publisher: "para",
+    video: "https://www.youtube.com/embed/Rrcb9mYNd6o",
+    id: "58620226",
+    gddltier: "20",
+    idstier: "Extreme"
+  },
+  {
+    name: "Mind Machine",
+    publisher: "Aimbotter",
+    video: "https://www.youtube.com/embed/Y6mrx-LQWjs",
+    id: "78873287",
+    gddltier: "20",
+    idstier: "Extreme"
+  },
+  {
+    name: "Injection",
+    publisher: "Cinemat",
+    video: "https://www.youtube.com/embed/6BUEWlNxQJY",
+    id: "89039492",
+    gddltier: "20",
+    idstier: "Extreme"
+  },
+  {
+    name: "Darkest Highway",
+    publisher: "bosjoker",
+    video: "https://www.youtube.com/embed/D9cmNMbZHqI",
+    id: "78397973",
+    gddltier: "20",
+    idstier: "Extreme"
+  },
 ];
 
 /* ===========================
@@ -55,6 +95,11 @@ const demons = [
    - 날짜는 문자열(YYYY-MM-DD 또는 로컬 포맷)로 표기.
    =========================== */
 const changeLog = [
+  { date: '2026-04-13', detail: 'Darkest Highway has been placed at #11, below Injection.' },
+  { date: '2026-04-13', detail: 'Injection has been placed at #10, below Mind Machine.' },
+  { date: '2026-04-13', detail: 'Mind Machine has been placed at #9, below Night Life.' },
+  { date: '2026-04-13', detail: 'Night Life has been placed at #8, below Theory of Visible v3.' },
+  { date: '2026-04-13', detail: 'Theory of Visible v3 has been placed at #7, below Dragonlocked.' },
   { date: '2026-04-13', detail: 'Dragonlocked has been placed at #6, below Aurora.' },
   { date: '2026-04-13', detail: 'Aurora has been placed at #5, below Hakaitsu.' },
   { date: '2026-03-29', detail: 'Hakaitsu has been placed at #4, below teehee colon three.' },
