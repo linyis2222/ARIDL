@@ -1,5 +1,13 @@
 const demons = [
   {
+    name: "Parallel Theory",
+    publisher: "SktLife",
+    video: "https://www.youtube.com/embed/3qY9P9XVdls",
+    id: "100239627",
+    gddltier: "20",
+    idstier: "-"
+  },
+  {
     name: "in canon",
     publisher: "cordeaux",
     video: "https://www.youtube.com/embed/YcPsb0C2sdc",
@@ -95,6 +103,7 @@ const demons = [
    - 날짜는 문자열(YYYY-MM-DD 또는 로컬 포맷)로 표기.
    =========================== */
 const changeLog = [
+  { date: '2026-04-15', detail: 'Parallel Theory has been placed at #1, above in canon.' },
   { date: '2026-04-13', detail: 'Darkest Highway has been placed at #11, below Injection.' },
   { date: '2026-04-13', detail: 'Injection has been placed at #10, below Mind Machine.' },
   { date: '2026-04-13', detail: 'Mind Machine has been placed at #9, below Night Life.' },
