@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Rated Insane Demons List</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.jpg" type="image/x-icon" />
+  </head>
+  <body>
+    <header id="top-bar">
+      <div class="header-left">
+        <h1>ARIDL</h1>
+      </div>
+
+      <div class="header-right">
+        <button id="btn-main" class="top-btn">Main</button>
+        <button id="btn-list" class="top-btn">List</button>
+        <button id="btn-changelog" class="top-btn">Change Log</button>
+      </div>
+    </header>
+
+    <!-- ✅ MAIN PAGE -->
+    <button id="developer-button">Developer</button>
+
+    <div id="main-page" class="page active">
+      <div>
+        <h1>WELCOME TO ARIDL!</h1>
+
+        <p>
+          Welcome to<br />
+          All Rated Insane Demons List!<br />
+          This list was created as a spinoff of the AREDL,<br />
+          ranking every rated Insane Demon<br />
+          in Geometry Dash.
+        </p>
+
+        <h3>Disclaimer:</h3>
+        <p>All placements are subjective and may change.</p>
+
+        <button id="view-list-btn">View List</button><br />
+
+        <h2>Other Websites</h2>
+
+        <p>
+          <strong>Insane Demon Spreadsheet (IDS):</strong><br />
+          <a
+            href="https://docs.google.com/spreadsheets/d/15ehtAIpCR8s04qIb8zij9sTpUdGJbmAE_LDcfVA3tcU/"
+            target="_blank"
+          >
+            https://docs.google.com/spreadsheets/d/15ehtAIpCR8s04qIb8zij9sTpUdGJbmAE_LDcfVA3tcU/
+          </a>
+        </p>
+
+        <p>
+          <strong>Insane Demon List:</strong><br />
+          <a href="https://insanedemonlist.com/" target="_blank">
+            https://insanedemonlist.com/
+          </a>
+        </p>
+
+        <h2>List Editors</h2>
+
+        <h3>Owner / Developer</h3>
+
+        <p>
+          <a href="https://www.youtube.com/@SatelliteLz" target="_blank">
+            SatelliteLz
+          </a>
+          /
+          <a href="https://www.youtube.com/@gdbchuq" target="_blank"> bchuq </a>
+        </p>
+
+        <!-- GIF -->
+        <div class="gif-container">
+          <img src="glunguspetpet.gif" alt="GIF" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ LIST PAGE -->
+    <div id="list-page" class="page">
+      <div id="container">
+        <aside id="left-panel">
+          <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search..." />
+          </div>
+
+          <ul id="map-list"></ul>
+        </aside>
+
+        <main id="right-panel">
+          <section id="map-details">
+            <h2 id="map-name"></h2>
+            <p id="map-publisher"></p>
+            <div id="map-video"></div>
+            <p id="map-id"></p>
+            <p id="map-gddltier"></p>
+            <p id="map-idstier"></p>
+          </section>
+
+          <section
+            id="change-log"
+            aria-label="Change Log"
+            class="hidden"
+          ></section>
+        </main>
+      </div>
+    </div>
+
+    <div id="developer-login" class="developer-overlay">
+      <div class="developer-box">
+        <h2>관리자용 로그인</h2>
+
+        <input
+          type="password"
+          id="developer-password"
+          placeholder="비밀번호를 입력해라!!!"
+        />
+
+        <button id="developer-login-button">로그인</button>
+
+        <button id="developer-login-close">아잉몰라요</button>
+
+        <p id="developer-login-error"></p>
+      </div>
+    </div>
+
+    <div id="developer-page">
+      <h1>관리자 페이지</h1>
+
+      <!-- 레벨 추가 -->
+
+      <section>
+        <h2>레벨 추가</h2>
+
+        <input id="add-rank" type="number" min="1" placeholder="Rank" />
+        <input id="add-name" placeholder="Name" />
+        <input id="add-publisher" placeholder="Publisher" />
+        <input id="add-video" placeholder="YouTube Embed URL" />
+        <input id="add-id" placeholder="Level ID" />
+        <input id="add-gddltier" placeholder="GDDL Tier" />
+        <input id="add-idstier" placeholder="IDS Tier" />
+
+        <button id="add-level-button">Add Level</button>
+      </section>
+
+      <!-- 레벨 수정 -->
+
+      <section>
+        <h2>레벨 수정</h2>
+
+        <input id="edit-id" placeholder="Level ID" />
+
+        <button id="load-edit-level">Load</button>
+
+        <br />
+
+        <input id="editRank" type="number" min="1" placeholder="순위" />
+        <input id="edit-name" placeholder="이름" />
+        <input id="edit-publisher" placeholder="Publisher" />
+        <input id="edit-video" placeholder="YouTube Embed URL" />
+        <input id="edit-gddltier" placeholder="GDDL Tier" />
+        <input id="edit-idstier" placeholder="IDS Tier" />
+
+        <button id="edit-level-button">Save Changes</button>
+      </section>
+
+      <!-- Change Log -->
+
+      <section>
+        <h2>Change Log 추가</h2>
+
+        <input type="date" id="log-date" />
+
+        <textarea id="log-detail" placeholder="Change description"></textarea>
+
+        <button id="add-log-button">Add Change Log</button>
+      </section>
+
+      <!-- Deloete Level -->
+
+      <section>
+        <h2>레벨 제거</h2>
+
+        <input id="delete-id" placeholder="Level ID" />
+
+        <button id="delete-level-button">Delete Level</button>
+      </section>
+
+      <button id="developer-logout">Logout</button>
+    </div>
+    <!-- JS -->
+    <script src="script.js" defer></script>
+  </body>
+</html>
