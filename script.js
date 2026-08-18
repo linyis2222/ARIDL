@@ -582,6 +582,25 @@ if (deleteLevelButton) {
   });
 }
 
+// 로그 템플릿
+
+const logDetail = document.getElementById("log-detail");
+
+document.querySelectorAll(".log-template").forEach((button) => {
+  button.addEventListener("click", () => {
+    logDetail.value = button.dataset.template;
+
+    // 텍스트를 넣은 뒤 textarea에 포커스
+    logDetail.focus();
+
+    // 커서를 맨 뒤로 이동
+    logDetail.setSelectionRange(
+      logDetail.value.length,
+      logDetail.value.length
+    );
+  });
+});
+
 
 // 리스트 숨기기
 const toggleListBtn = document.getElementById("toggle-list-btn");

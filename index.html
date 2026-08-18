@@ -179,7 +179,60 @@
 
         <input type="date" id="log-date" />
 
-        <textarea id="log-detail" placeholder="Change description"></textarea>
+        <div id="log-templates">
+          <button
+            type="button"
+            class="log-template"
+            data-template="[Level] has been placed at #1, above [Level]."
+          >
+            Placed (Above)
+          </button>
+
+          <button
+            type="button"
+            class="log-template"
+            data-template="[Level] has been placed at #0, below [Level]."
+          >
+            Placed (Below)
+          </button>
+
+          <button
+            type="button"
+            class="log-template"
+            data-template="[Level] has been placed at #0, above [Level] and below [Level]."
+          >
+            Placed (Between)
+          </button>
+
+          <button
+            type="button"
+            class="log-template"
+            data-template="Due to being promoted to Extreme Demon, [Level] has been removed from the list at #0."
+          >
+            Promoted
+          </button>
+
+          <button
+            type="button"
+            class="log-template"
+            data-template="Due to being demoted to Hard Demon, [Level] has been removed from the list at #0."
+          >
+            Demoted
+          </button>
+
+          <button
+            type="button"
+            class="log-template"
+            data-template="[Level1] and [Level2] have been swapped, with [Level1] now sitting above at #0."
+          >
+            Swapped
+          </button>
+        </div>
+
+        <textarea
+          id="log-detail"
+          placeholder="Change description"
+        ></textarea>
 
         <button id="add-log-button">Add Change Log</button>
       </section>
