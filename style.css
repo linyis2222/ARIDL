@@ -209,6 +209,24 @@ body {
   padding: 8px;
 }
 
+#left-panel.list-hidden {
+  display: none;
+}
+
+#left-panel.list-hidden + #right-panel {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#left-panel.list-hidden + #right-panel #map-details {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #right-panel {
   flex: 1;
   padding: 20px;
@@ -216,6 +234,48 @@ body {
   overflow-y: auto;
   height: auto;
   min-height: calc(100vh - 56px);
+}
+/* ==============================
+   리스트 토글 버튼
+   ============================== */
+
+#toggle-list-btn {
+  position: fixed;
+
+  left: 0;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 1000;
+
+  width: 28px;
+  height: 55px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 0 10px 10px 0;
+
+  background: #4287f5;
+  color: white;
+
+  font-size: 25px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.15s ease,
+    width 0.15s ease,
+    left 0.2s ease;
+}
+
+#toggle-list-btn:hover {
+  width: 34px;
+  background: #2f6fe0;
 }
 
 #left-panel ul {
@@ -498,6 +558,7 @@ body {
 /* ==============================
    메인 페이지 스타일
    ============================== */
+
 #main-page {
   min-height: calc(100vh - 56px);
   box-sizing: border-box;
@@ -507,45 +568,257 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 10px;
+  padding: 45px 20px 60px;
   box-sizing: border-box;
 }
 
+/* 메인 카드 */
 #main-page > div {
+  width: 100%;
+  max-width: 760px;
+  box-sizing: border-box;
+
+  padding: 55px 50px;
   text-align: center;
-  max-width: 700px;
-  padding: 20px;
+
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 24px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+/* 메인 제목 */
 #main-page h1 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  color: #ff7f50;
+  margin: 0 0 22px;
+
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+
+  color: #ff7043;
 }
 
+/* 일반 텍스트 */
 #main-page p {
+  margin: 12px 0;
+
   font-size: 1rem;
-  color: #333;
+  line-height: 1.8;
+
+  color: #555;
 }
 
-#view-list-btn {
+/* Disclaimer / 섹션 제목 */
+#main-page h2 {
+  margin-top: 45px;
+  margin-bottom: 15px;
+
+  font-size: 1.35rem;
+  font-weight: 700;
+
+  color: #222;
+}
+
+#main-page h3 {
   margin-top: 30px;
-  padding: 12px 26px;
+  margin-bottom: 8px;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  color: #888;
+}
+
+/* Disclaimer 설명 */
+#main-page h3 + p {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* 링크 */
+#main-page a {
+  color: #4287f5;
+  text-decoration: none;
+
+  overflow-wrap: anywhere;
+
+  transition:
+    color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+#main-page a:hover {
+  color: #2f6fe0;
+}
+
+/* View List 버튼 */
+#view-list-btn {
+  margin-top: 28px;
+
+  padding: 13px 30px;
+
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
+
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+
   background: #4287f5;
   color: #fff;
+
   cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(66, 135, 245, 0.22);
+
   transition:
-    transform 0.08s,
-    box-shadow 0.12s,
-    background 0.15s;
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 #view-list-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+
   background: #2f6fe0;
+
+  box-shadow: 0 8px 20px rgba(66, 135, 245, 0.28);
+}
+
+#view-list-btn:active {
+  transform: translateY(0);
+
+  box-shadow: 0 3px 8px rgba(66, 135, 245, 0.2);
+}
+
+/* GIF */
+.gif-container {
+  margin-top: 45px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gif-container img {
+  display: block;
+
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.gif-container img:hover {
+  transform: scale(1.05);
+}
+
+/* ==============================
+   모바일
+   ============================== */
+
+@media (max-width: 600px) {
+  #main-page.active {
+    padding: 20px 12px 40px;
+  }
+
+  #main-page > div {
+    padding: 38px 22px;
+    border-radius: 20px;
+  }
+
+  #main-page h1 {
+    font-size: 2.1rem;
+    letter-spacing: -1px;
+  }
+
+  #main-page p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  #main-page h2 {
+    margin-top: 38px;
+    font-size: 1.2rem;
+  }
+
+  #main-page h3 {
+    font-size: 0.9rem;
+  }
+
+  #view-list-btn {
+    width: 100%;
+    padding: 14px 20px;
+  }
+
+  .gif-container {
+    margin-top: 35px;
+  }
+
+  .gif-container img {
+    max-width: 140px;
+  }
+
+  /* 리스트 패널 */
+  #left-panel {
+    width: 85vw;
+    max-width: 360px;
+    min-width: 260px;
+
+    box-sizing: border-box;
+  }
+
+  /* 검색창 */
+  #search-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #search-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 레벨 리스트 */
+  #map-list {
+    width: 100%;
+    box-sizing: border-box;
+
+    overflow-x: hidden;
+  }
+
+  /* 레벨 이름 */
+  #map-list li {
+    width: 100%;
+    box-sizing: border-box;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 리스트 안의 레벨 이름 */
+  #map-list li * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #toggle-list-btn {
+    width: 25px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  #toggle-list-btn:hover {
+    width: 30px;
+  }
 }

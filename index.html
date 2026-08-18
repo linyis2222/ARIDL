@@ -26,12 +26,12 @@
     <button id="developer-button">Developer</button>
 
     <div id="main-page" class="page active">
-      <div>
+      <div style="user-select: none;">
         <h1>WELCOME TO ARIDL!</h1>
 
         <p>
           Welcome to<br />
-          All Rated Insane Demons List!<br />
+          <strong>All Rated Insane Demons List!</strong><br />
           This list was created as a spinoff of the AREDL,<br />
           ranking every rated Insane Demon<br />
           in Geometry Dash.
@@ -46,11 +46,11 @@
 
         <p>
           <strong>Insane Demon Spreadsheet (IDS):</strong><br />
-          <a
+          <a style="overflow-wrap: anywhere; word-break: break-word;"
             href="https://docs.google.com/spreadsheets/d/15ehtAIpCR8s04qIb8zij9sTpUdGJbmAE_LDcfVA3tcU/"
             target="_blank"
           >
-            https://docs.google.com/spreadsheets/d/15ehtAIpCR8s04qIb8zij9sTpUdGJbmAE_LDcfVA3tcU/
+            Open Spreadsheet
           </a>
         </p>
 
@@ -82,6 +82,9 @@
 
     <!-- ✅ LIST PAGE -->
     <div id="list-page" class="page">
+
+      <button id="toggle-list-btn" aria-label="Hide List">‹</button>
+
       <div id="container">
         <aside id="left-panel">
           <div id="search-container">
@@ -93,6 +96,7 @@
 
         <main id="right-panel">
           <section id="map-details">
+            <h1 id="map-rank"></h1>
             <h2 id="map-name"></h2>
             <p id="map-publisher"></p>
             <div id="map-video"></div>

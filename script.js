@@ -49,6 +49,7 @@ let changeLogDiv;
 let btnList;
 let btnChangelog;
 
+let mapRank;
 let mapName;
 let mapPublisher;
 let mapVideo;
@@ -145,6 +146,7 @@ function selectMap(demon, liElement) {
   if (mapDetailsDiv) mapDetailsDiv.style.display = "";
   if (changeLogDiv) changeLogDiv.style.display = "none";
 
+  mapRank.textContent = "#" + demon.rank;
   mapName.textContent = demon.name;
   mapPublisher.innerHTML = `<span class="tag">PUBLISHER</span><span class="value">${escapeHtml(demon.publisher)}</span>`;
   mapVideo.innerHTML = `<iframe src="${escapeHtml(demon.video)}" allowfullscreen></iframe>`;
@@ -215,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnList = document.getElementById("btn-list");
   btnChangelog = document.getElementById("btn-changelog");
 
+  mapRank = document.getElementById("map-rank");
   mapName = document.getElementById("map-name");
   mapPublisher = document.getElementById("map-publisher");
   mapVideo = document.getElementById("map-video");
@@ -578,3 +581,55 @@ if (deleteLevelButton) {
     }
   });
 }
+
+
+// 리스트 숨기기
+const toggleListBtn = document.getElementById("toggle-list-btn");
+const leftPanel = document.getElementById("left-panel");
+
+function updateToggleButtonPosition() {
+  if (leftPanel.classList.contains("list-hidden")) {
+    toggleListBtn.style.left = "0px";
+    return;
+  }
+
+  const rect = leftPanel.getBoundingClientRect();
+
+  toggleListBtn.style.left = `${rect.right}px`;
+}
+
+toggleListBtn.addEventListener("click", () => {
+  const hidden = leftPanel.classList.toggle("list-hidden");
+
+  if (hidden) {
+    toggleListBtn.textContent = "›";
+    toggleListBtn.setAttribute("aria-label", "Show List");
+  } else {
+    toggleListBtn.textContent = "‹";
+    toggleListBtn.setAttribute("aria-label", "Hide List");
+  }
+
+  // 리스트가 나타난 다음 위치 계산
+  requestAnimationFrame(updateToggleButtonPosition);
+});
+
+
+// 화면 크기 변경
+window.addEventListener("resize", updateToggleButtonPosition);
+
+
+// 리스트 크기가 변경될 때마다 자동으로 위치 갱신
+const resizeObserver = new ResizeObserver(() => {
+  updateToggleButtonPosition();
+});
+
+resizeObserver.observe(leftPanel);
+
+
+// 페이지가 완전히 로드된 후 계산
+window.addEventListener("load", () => {
+  requestAnimationFrame(updateToggleButtonPosition);
+});
+
+// 초기 계산
+requestAnimationFrame(updateToggleButtonPosition);
