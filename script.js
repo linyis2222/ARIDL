@@ -5,6 +5,8 @@ const API_URL = "https://aridl-database.onrender.com";
 
 async function loadLevels() {
   try {
+    showLoading("레벨 불러오는중...");
+
     const response = await fetch(`${API_URL}/api/levels`);
 
     if (!response.ok) {
@@ -18,6 +20,8 @@ async function loadLevels() {
     console.error(error);
 
     alert("레벨 데이터를 불러오지 못했습니다.");
+  } finally {
+    hideLoading();
   }
 }
 
@@ -376,96 +380,107 @@ developerLoginButton.addEventListener("click", async () => {
 document
   .getElementById("add-level-button")
   .addEventListener("click", async () => {
-    const rank = Number(document.getElementById("add-rank").value);
 
-    const level = {
-      rank: rank,
-      name: document.getElementById("add-name").value,
-      publisher: document.getElementById("add-publisher").value,
-      video: document.getElementById("add-video").value,
-      id: document.getElementById("add-id").value,
-      gddltier: document.getElementById("add-gddltier").value,
-      idstier: document.getElementById("add-idstier").value,
-    };
+    showLoading("레벨 추가중...");
 
-    // 현재 레벨 목록 저장
-    const oldLevels = [...demons];
+    try{
+      const rank = Number(document.getElementById("add-rank").value);
 
-    const response = await fetch(`${API_URL}/api/levels`, {
-      method: "POST",
+      const level = {
+        rank: rank,
+        name: document.getElementById("add-name").value,
+        publisher: document.getElementById("add-publisher").value,
+        video: document.getElementById("add-video").value,
+        id: document.getElementById("add-id").value,
+        gddltier: document.getElementById("add-gddltier").value,
+        idstier: document.getElementById("add-idstier").value,
+      };
 
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${developerToken}`,
-      },
+      // 현재 레벨 목록 저장
+      const oldLevels = [...demons];
 
-      body: JSON.stringify(level),
-    });
+      const response = await fetch(`${API_URL}/api/levels`, {
+        method: "POST",
 
-    const data = await response.json();
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${developerToken}`,
+        },
 
-    if (!response.ok) {
-      alert(data.error);
-      return;
-    }
+        body: JSON.stringify(level),
+      });
 
-    alert("Level added!");
+      const data = await response.json();
 
-    // 새 레벨을 포함한 목록
-    await loadLevels();
+      if (!response.ok) {
+        alert(data.error);
+        return;
+      }
 
-    // 현재 demons를 rank 순서로 정렬
-    const sortedLevels = [...demons].sort(
-      (a, b) => Number(a.rank) - Number(b.rank)
-    );
+      alert("Level added!");
 
-    const newLevel = sortedLevels.find(
-      (l) => String(l.id) === String(level.id)
-    );
+      // 새 레벨을 포함한 목록
+      await loadLevels();
 
-    if (!newLevel) {
-      return;
-    }
+      // 현재 demons를 rank 순서로 정렬
+      const sortedLevels = [...demons].sort(
+        (a, b) => Number(a.rank) - Number(b.rank)
+      );
 
-    const newRank = Number(newLevel.rank);
+      const newLevel = sortedLevels.find(
+        (l) => String(l.id) === String(level.id)
+      );
 
-    const aboveLevel = sortedLevels.find(
-      (l) => Number(l.rank) === newRank - 1
-    );
+      if (!newLevel) {
+        return;
+      }
 
-    const belowLevel = sortedLevels.find(
-      (l) => Number(l.rank) === newRank + 1
-    );
+      const newRank = Number(newLevel.rank);
 
-    let logText = "";
+      const aboveLevel = sortedLevels.find(
+        (l) => Number(l.rank) === newRank - 1
+      );
 
-    // 1위
-    if (newRank === 1) {
-      if (belowLevel) {
+      const belowLevel = sortedLevels.find(
+        (l) => Number(l.rank) === newRank + 1
+      );
+
+      let logText = "";
+
+      // 1위
+      if (newRank === 1) {
+        if (belowLevel) {
+          logText =
+            `${newLevel.name} has been placed at #${newRank}, ` +
+            `below ${belowLevel.name}.`;
+        }
+      }
+
+      // 마지막 순위
+      else if (!aboveLevel) {
+        if (belowLevel) {
+          logText =
+            `${newLevel.name} has been placed at #${newRank}, ` +
+            `above ${belowLevel.name}.`;
+        }
+      }
+
+      // 중간
+      else if (aboveLevel && belowLevel) {
         logText =
           `${newLevel.name} has been placed at #${newRank}, ` +
-          `below ${belowLevel.name}.`;
+          `above ${aboveLevel.name} and below ${belowLevel.name}.`;
       }
-    }
 
-    // 마지막 순위
-    else if (!aboveLevel) {
-      if (belowLevel) {
-        logText =
-          `${newLevel.name} has been placed at #${newRank}, ` +
-          `above ${belowLevel.name}.`;
+      if (logText) {
+        setChangeLog(logText);
       }
-    }
+    } catch (error) {
+      console.error(error);
+      alert("레벨 추가 중 오류가 발생했습니다.");
 
-    // 중간
-    else if (aboveLevel && belowLevel) {
-      logText =
-        `${newLevel.name} has been placed at #${newRank}, ` +
-        `above ${aboveLevel.name} and below ${belowLevel.name}.`;
-    }
-
-    if (logText) {
-      setChangeLog(logText);
+    } finally {
+      hideLoading();
     }
   });
 
@@ -503,97 +518,109 @@ document
 document
   .getElementById("edit-level-button")
   .addEventListener("click", async () => {
-    const id = document.getElementById("edit-id").value;
 
-    // 수정 전 레벨 찾기
-    const oldLevel = demons.find(
-      (l) => String(l.id) === String(id)
-    );
+    showLoading("레벨 업데이트중...");
 
-    if (!oldLevel) {
-      alert("수정할 레벨을 찾을 수 없습니다.");
-      return;
-    }
+    try {
 
-    const oldRank = Number(oldLevel.rank);
+      const id = document.getElementById("edit-id").value;
 
-    const level = {
-      name: document.getElementById("edit-name").value,
-      publisher: document.getElementById("edit-publisher").value,
-      video: document.getElementById("edit-video").value,
-      gddltier: document.getElementById("edit-gddltier").value,
-      idstier: document.getElementById("edit-idstier").value,
-      rank: Number(document.getElementById("editRank").value),
-    };
-
-    const newRank = level.rank;
-
-    const response = await fetch(`${API_URL}/api/levels/${id}`, {
-      method: "PUT",
-
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${developerToken}`,
-      },
-
-      body: JSON.stringify(level),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.error);
-      return;
-    }
-
-    alert("Level updated!");
-
-    await loadLevels();
-
-    // demons 사용
-    const sortedLevels = [...demons].sort(
-      (a, b) => Number(a.rank) - Number(b.rank)
-    );
-
-    const updatedLevel = sortedLevels.find(
-      (l) => String(l.id) === String(id)
-    );
-
-    if (!updatedLevel) return;
-
-    // 순위가 바뀐 경우에만 Change Log 자동 생성
-    if (oldRank !== newRank) {
-      const aboveLevel = sortedLevels.find(
-        (l) => Number(l.rank) === newRank - 1
+      // 수정 전 레벨 찾기
+      const oldLevel = demons.find(
+        (l) => String(l.id) === String(id)
       );
 
-      const belowLevel = sortedLevels.find(
-        (l) => Number(l.rank) === newRank + 1
+      if (!oldLevel) {
+        alert("수정할 레벨을 찾을 수 없습니다.");
+        return;
+      }
+
+      const oldRank = Number(oldLevel.rank);
+
+      const level = {
+        name: document.getElementById("edit-name").value,
+        publisher: document.getElementById("edit-publisher").value,
+        video: document.getElementById("edit-video").value,
+        gddltier: document.getElementById("edit-gddltier").value,
+        idstier: document.getElementById("edit-idstier").value,
+        rank: Number(document.getElementById("editRank").value),
+      };
+
+      const newRank = level.rank;
+
+      const response = await fetch(`${API_URL}/api/levels/${id}`, {
+        method: "PUT",
+
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${developerToken}`,
+        },
+
+        body: JSON.stringify(level),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.error);
+        return;
+      }
+
+      alert("Level updated!");
+
+      await loadLevels();
+
+      // demons 사용
+      const sortedLevels = [...demons].sort(
+        (a, b) => Number(a.rank) - Number(b.rank)
       );
 
-      let logText = "";
+      const updatedLevel = sortedLevels.find(
+        (l) => String(l.id) === String(id)
+      );
 
-      if (newRank === 1) {
-        if (belowLevel) {
+      if (!updatedLevel) return;
+
+      // 순위가 바뀐 경우에만 Change Log 자동 생성
+      if (oldRank !== newRank) {
+        const aboveLevel = sortedLevels.find(
+          (l) => Number(l.rank) === newRank - 1
+        );
+
+        const belowLevel = sortedLevels.find(
+          (l) => Number(l.rank) === newRank + 1
+        );
+
+        let logText = "";
+
+        if (newRank === 1) {
+          if (belowLevel) {
+            logText =
+              `${updatedLevel.name} has been placed at #${newRank}, ` +
+              `below ${belowLevel.name}.`;
+          }
+        } else if (!belowLevel) {
+          if (aboveLevel) {
+            logText =
+              `${updatedLevel.name} has been placed at #${newRank}, ` +
+              `above ${aboveLevel.name}.`;
+          }
+        } else if (aboveLevel && belowLevel) {
           logText =
             `${updatedLevel.name} has been placed at #${newRank}, ` +
-            `below ${belowLevel.name}.`;
+            `above ${aboveLevel.name} and below ${belowLevel.name}.`;
         }
-      } else if (!belowLevel) {
-        if (aboveLevel) {
-          logText =
-            `${updatedLevel.name} has been placed at #${newRank}, ` +
-            `above ${aboveLevel.name}.`;
-        }
-      } else if (aboveLevel && belowLevel) {
-        logText =
-          `${updatedLevel.name} has been placed at #${newRank}, ` +
-          `above ${aboveLevel.name} and below ${belowLevel.name}.`;
-      }
 
-      if (logText) {
-        setChangeLog(logText);
+        if (logText) {
+          setChangeLog(logText);
+        }
       }
+    } catch (error) {
+      console.error(error);
+      alert("레벨 수정 중 오류가 발생했습니다.");
+
+    } finally {
+      hideLoading();
     }
   });
 
@@ -646,75 +673,86 @@ const deleteLevelButton = document.getElementById("delete-level-button");
 
 if (deleteLevelButton) {
   deleteLevelButton.addEventListener("click", async () => {
-    const id = deleteIdInput.value.trim();
 
-    if (!id) {
-      alert("Level ID를 입력해주세요.");
-      return;
-    }
-
-    const targetLevel = demons.find(
-      (l) => String(l.id) === String(id)
-    );
-
-    if (!targetLevel) {
-      alert("해당 레벨을 찾을 수 없습니다.");
-      return;
-    }
-
-    const confirmed = confirm(
-      `정말 ID ${id} 레벨을 삭제하시겠습니까?`
-    );
-
-    if (!confirmed) return;
+    showLoading("레벨 제거중 ...");
 
     try {
-      const response = await fetch(
-        `${API_URL}/api/levels/${encodeURIComponent(id)}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${developerToken}`,
-          },
-        }
-      );
+      const id = deleteIdInput.value.trim();
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.error || "레벨 삭제에 실패했습니다.");
+      if (!id) {
+        alert("Level ID를 입력해주세요.");
         return;
       }
 
-      alert(`"${data.level.name}" 레벨이 삭제되었습니다.`);
-
-      const deletedName = targetLevel.name;
-      const deletedRank = Number(targetLevel.rank);
-
-      deleteIdInput.value = "";
-
-      await loadLevels();
-
-      // 삭제 후 남은 레벨 정렬
-      const sortedLevels = [...levels].sort(
-        (a, b) => Number(a.rank) - Number(b.rank)
+      const targetLevel = demons.find(
+        (l) => String(l.id) === String(id)
       );
 
-      // 삭제된 자리에 있던 다음 레벨
-      const nextLevel = sortedLevels.find(
-        (l) => Number(l.rank) === deletedRank
-      );
-
-      let logText =
-        `${deletedName} has been removed from the list at #${deletedRank}.`;
-
-      if (logText) {
-        setChangeLog(logText);
+      if (!targetLevel) {
+        alert("해당 레벨을 찾을 수 없습니다.");
+        return;
       }
 
+      const confirmed = confirm(
+        `정말 ID ${id} 레벨을 삭제하시겠습니까?`
+      );
+
+      if (!confirmed) return;
+
+      try {
+        const response = await fetch(
+          `${API_URL}/api/levels/${encodeURIComponent(id)}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${developerToken}`,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.error || "레벨 삭제에 실패했습니다.");
+          return;
+        }
+
+        alert(`"${data.level.name}" 레벨이 삭제되었습니다.`);
+
+        const deletedName = targetLevel.name;
+        const deletedRank = Number(targetLevel.rank);
+
+        deleteIdInput.value = "";
+
+        await loadLevels();
+
+        // 삭제 후 남은 레벨 정렬
+        const sortedLevels = [...levels].sort(
+          (a, b) => Number(a.rank) - Number(b.rank)
+        );
+
+        // 삭제된 자리에 있던 다음 레벨
+        const nextLevel = sortedLevels.find(
+          (l) => Number(l.rank) === deletedRank
+        );
+
+        let logText =
+          `${deletedName} has been removed from the list at #${deletedRank}.`;
+
+        if (logText) {
+          setChangeLog(logText);
+        }
+
+      } catch (error) {
+        console.error(error);
+        alert("서버와 통신할 수 없습니다. \n (아마도 괜찮을겁니다.)");
+      }
     } catch (error) {
       console.error(error);
-      alert("서버와 통신할 수 없습니다. \n (아마도 괜찮을겁니다.)");
+      alert("레벨 제거 중 오류가 발생했습니다.");
+
+    } finally {
+      hideLoading();
     }
   });
 }
@@ -809,4 +847,18 @@ function setChangeLog(text) {
       logDetail.value.length
     );
   }
+}
+
+// 로딩 화면
+
+const loadingScreen = document.getElementById("loading-screen");
+const loadingText = document.getElementById("loading-text");
+
+function showLoading(text = "로딩중...") {
+  loadingText.textContent = text;
+  loadingScreen.classList.remove("hidden");
+}
+
+function hideLoading() {
+  loadingScreen.classList.add("hidden");
 }
