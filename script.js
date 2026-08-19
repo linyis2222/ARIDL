@@ -380,22 +380,16 @@ document
 
     const level = {
       rank: rank,
-
       name: document.getElementById("add-name").value,
-
       publisher: document.getElementById("add-publisher").value,
-
       video: document.getElementById("add-video").value,
-
       id: document.getElementById("add-id").value,
-
       gddltier: document.getElementById("add-gddltier").value,
-
       idstier: document.getElementById("add-idstier").value,
     };
 
     // 현재 레벨 목록 저장
-    const oldLevels = [...levels];
+    const oldLevels = [...demons];
 
     const response = await fetch(`${API_URL}/api/levels`, {
       method: "POST",
@@ -420,8 +414,8 @@ document
     // 새 레벨을 포함한 목록
     await loadLevels();
 
-    // 현재 levels를 rank 순서로 정렬
-    const sortedLevels = [...levels].sort(
+    // 현재 demons를 rank 순서로 정렬
+    const sortedLevels = [...demons].sort(
       (a, b) => Number(a.rank) - Number(b.rank)
     );
 
@@ -442,6 +436,7 @@ document
     const belowLevel = sortedLevels.find(
       (l) => Number(l.rank) === newRank + 1
     );
+
     let logText = "";
 
     // 1위
@@ -511,7 +506,7 @@ document
     const id = document.getElementById("edit-id").value;
 
     // 수정 전 레벨 찾기
-    const oldLevel = levels.find(
+    const oldLevel = demons.find(
       (l) => String(l.id) === String(id)
     );
 
@@ -524,15 +519,10 @@ document
 
     const level = {
       name: document.getElementById("edit-name").value,
-
       publisher: document.getElementById("edit-publisher").value,
-
       video: document.getElementById("edit-video").value,
-
       gddltier: document.getElementById("edit-gddltier").value,
-
       idstier: document.getElementById("edit-idstier").value,
-
       rank: Number(document.getElementById("editRank").value),
     };
 
@@ -543,7 +533,6 @@ document
 
       headers: {
         "Content-Type": "application/json",
-
         Authorization: `Bearer ${developerToken}`,
       },
 
@@ -561,7 +550,8 @@ document
 
     await loadLevels();
 
-    const sortedLevels = [...levels].sort(
+    // demons 사용
+    const sortedLevels = [...demons].sort(
       (a, b) => Number(a.rank) - Number(b.rank)
     );
 
