@@ -462,12 +462,14 @@ body {
   margin: 0 0 8px 0;
   font-size: 2rem;
   color: #ff7f50;
+  user-select: all;
 }
 #map-details .tag {
   font-weight: bold;
   font-size: 16px;
   display: inline-block;
   width: 120px;
+  user-select: none;
 }
 #map-details .value {
   font-weight: normal;
@@ -475,6 +477,7 @@ body {
   display: inline-block;
   margin-left: 10px;
   white-space: pre-wrap;
+  user-select: all;
 }
 
 #change-log {
