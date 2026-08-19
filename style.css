@@ -253,10 +253,13 @@ body {
 }
 
 #left-panel.list-hidden + #right-panel {
-  flex: 1;
+  left: 0;
+  right: 0;
   width: 100%;
+
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 #left-panel.list-hidden + #right-panel #map-details {

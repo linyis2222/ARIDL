@@ -714,7 +714,7 @@ if (deleteLevelButton) {
 
     } catch (error) {
       console.error(error);
-      alert("서버와 통신할 수 없습니다.");
+      alert("서버와 통신할 수 없습니다. \n (아마도 괜찮을겁니다.)");
     }
   });
 }
