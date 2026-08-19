@@ -367,17 +367,16 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
 }
 
 #left-panel.list-hidden + #right-panel #map-details {
-  width: 100%;
-  max-width: 800px;
+  width: min(900px, calc(100% - 40px));
+  max-width: 900px;
+
   margin-left: auto;
   margin-right: auto;
+
+  box-sizing: border-box;
 }
 
 #map-list {
@@ -466,16 +465,115 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-
   left: 300px;
 
   box-sizing: border-box;
 
-  padding: 20px;
+  padding: 40px;
 
-  /* 오른쪽만 스크롤 */
+  background: #f5f5f6;
+
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+#map-details {
+  width: min(100%, 900px);
+
+  /* 높이는 내용에 맞게 자동으로 늘어남 */
+  height: auto;
+  min-height: 0;
+
+  margin: 0 auto;
+  padding: 32px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e3e3e5;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+#map-rank {
+  display: inline-block;
+
+  margin: 0 0 10px 0;
+  padding: 6px 12px;
+
+  background: #eeeeef;
+
+  border-radius: 7px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  color: #666;
+
+  letter-spacing: 0.5px;
+}
+
+#map-name {
+  margin: 0 0 18px 0;
+
+  font-size: 34px;
+  line-height: 1.2;
+
+  font-weight: 800;
+
+  color: #171717;
+
+  word-break: break-word;
+}
+
+#map-publisher {
+  margin: 0 0 24px 0;
+
+  font-size: 15px;
+
+  color: #777;
+}
+
+#map-video {
+  width: 100%;
+
+  margin: 0 0 28px 0;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background: #111;
+
+  aspect-ratio: 16 / 9;
+}
+
+#map-video iframe {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  border: 0;
+}
+
+#map-id,
+#map-gddltier,
+#map-idstier {
+  margin: 8px 0;
+  padding: 12px 14px;
+
+  background: #f7f7f8;
+
+  border: 1px solid #e7e7e9;
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  color: #444;
 }
 
 /* ==============================
