@@ -653,7 +653,7 @@ if (deleteLevelButton) {
       return;
     }
 
-    const targetLevel = levels.find(
+    const targetLevel = demons.find(
       (l) => String(l.id) === String(id)
     );
 
