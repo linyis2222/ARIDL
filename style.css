@@ -137,7 +137,15 @@ body {
    상단 검은 바: 제목 왼쪽, 버튼 오른쪽
    ============================== */
 #top-bar {
-  background-color: #00bb00;
+  background: linear-gradient(
+    105deg,
+    #87cefa 0%,
+    #a8d8f5 20%,
+    #d5b9ed 48%,
+    #f09acb 72%,
+    #ff69b4 100%
+  );
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -146,7 +154,6 @@ body {
   gap: 12px;
   position: relative;
   z-index: 100;
-
   width: 100%;
   min-height: 56px;
 }
