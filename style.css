@@ -187,20 +187,20 @@ body {
   color: #fff;
   border-color: transparent;
 }
-
-/* ==============================
+/*
    LOADING SCREEN
    ============================== */
 
 #loading-screen {
   position: fixed;
+
   inset: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.97);
 
   z-index: 99999;
 
@@ -208,8 +208,8 @@ body {
   visibility: visible;
 
   transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease;
+    opacity 0.25s ease,
+    visibility 0.25s ease;
 }
 
 #loading-screen.hidden {
@@ -222,7 +222,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+}
+
+#loading-logo {
+  width: 130px;
+  height: 130px;
+
+  object-fit: contain;
+
+  margin-bottom: 4px;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
 }
 
 .loading-spinner {
@@ -238,9 +253,11 @@ body {
 }
 
 #loading-text {
-  font-size: 15px;
+  min-height: 20px;
+  font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #555;
+  letter-spacing: 0.2px;
 }
 
 @keyframes loading-spin {

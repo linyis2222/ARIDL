@@ -1,11 +1,22 @@
 let demons = [];
 let changeLog = [];
 
+const loadingMessages = [
+  "사이트 로딩중...",
+  "글렁거스 쓰다듬는중...",
+  "글렁거스 털 정리중...",
+  "먼지 터는중...",
+  "사이트 정리중...",
+  "빗자루질중..."
+];
+
 const API_URL = "https://aridl-database.onrender.com";
 
-async function loadLevels() {
+async function loadLevels(showLoader = true) {
   try {
-    showLoading("레벨 불러오는중...");
+    if (showLoader) {
+      showLoading();
+    }
 
     const response = await fetch(`${API_URL}/api/levels`);
 
@@ -16,12 +27,16 @@ async function loadLevels() {
     demons = await response.json();
 
     buildLeftList();
+
   } catch (error) {
     console.error(error);
 
     alert("레벨 데이터를 불러오지 못했습니다.");
+
   } finally {
-    hideLoading();
+    if (showLoader) {
+      hideLoading();
+    }
   }
 }
 
@@ -854,8 +869,15 @@ function setChangeLog(text) {
 const loadingScreen = document.getElementById("loading-screen");
 const loadingText = document.getElementById("loading-text");
 
-function showLoading(text = "로딩중...") {
-  loadingText.textContent = text;
+function showLoading(text = null) {
+  const message =
+    text ||
+    loadingMessages[
+      Math.floor(Math.random() * loadingMessages.length)
+    ];
+
+  loadingText.textContent = message;
+
   loadingScreen.classList.remove("hidden");
 }
 
